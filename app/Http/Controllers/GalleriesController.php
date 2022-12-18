@@ -53,18 +53,18 @@ class GalleriesController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'alt' => 'required|max:50',
-            'gallery_full_path' => 'required|mimes:png,svg,jpeg,jpg,gif|max:5000'
+            'image' => 'required|mimes:png,svg,jpeg,jpg,gif'
         ]);
 
-        if ( request()->has('gallery_full_path') && $request->file('gallery_full_path') !== null )
+        if ( request()->has('image') && $request->file('image') !== null )
         {
             // upload file here 
-            $imageStoragePath = Storage::putFile($request->file('gallery_full_path'));
+            $imageStoragePath = Storage::putFile('/public/images', $request->file('image'));
         }
         // create gallery
         Gallery::create([
             'name' => $request->name,
-            'title' => $request->title,
+            'alt' => $request->alt,
             'gallery_full_path' => $imageStoragePath
         ]);
 

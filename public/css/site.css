@@ -35,3 +35,13 @@ form {
     margin: 10px;
     width: 80%;
 }
+
+.form-error {
+    color: red;
+    padding: 10px 15px;
+    background-color: red;
+    font-size: .75rem;
+    font-weight: bold;
+    border: 1px solid red;
+    border-radius: 5px;
+}

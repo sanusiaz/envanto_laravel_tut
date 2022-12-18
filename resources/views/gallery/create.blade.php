@@ -8,12 +8,19 @@
         <div>
             <label class="text-sm" for="gallery-name">Name</label>
             <input class="border-1 text-lg" type="text" name="name" id="gallery-name">
+
+            @error('name')
+            <small class="form-error">{{ $message }}</small>
+        @enderror
         </div>
 
 
         <div>
             <label class="text-sm" for="gallery-brand">Gallert ALT</label>
             <input class="border-1 text-lg" type="text" name="alt" id="gallery-brand">
+            @error('alt')
+                <small class="form-error">{{ $message }}</small>
+            @enderror
         </div>
         
         
@@ -21,6 +28,9 @@
             <label class="text-sm" for="gallery-image">Image: </label>
             <input class="border-1" type="file" name="image" id="gallery-image">
         </div>
+        @error('image')
+            <small class="form-error">{{ $message }}</small>
+        @enderror
 
         <button type="submit">Submit Page</button>
 
