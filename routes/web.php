@@ -22,6 +22,8 @@ Route::get("/about", [HomeController::class, 'about'])
 Route::get("/contact", [HomeController::class, 'contact'])
     ->name('home.contact');
 
+Route::resource('gallery', \App\Http\Controllers\GalleriesController::class);
+
 Route::get('/store/{category?}/{item?}', function ($category = null, $item = null){
 
     if (  isset($category) )
