@@ -9,3 +9,29 @@ body {
 nav a {
     padding: .5rem;
 }
+
+.p-6 {
+    padding: 3.5rem;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.border-1 {
+    border: 1px solid #ccc;
+}
+
+.text-sm {
+    font-size: 14px;
+}
+
+.text-lg {
+    font-size: 21px;
+}
+
+form {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+}

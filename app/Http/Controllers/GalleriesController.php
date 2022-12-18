@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleriesController extends Controller
 {
@@ -23,7 +25,8 @@ class GalleriesController extends Controller
     public function index()
     {
         return view('gallery.index', [
-            'galleries' => self::getData(),
+            // 'galleries' => self::getData(),
+            'galleries' => Gallery::all(),
             'userInput' => "<script>alert('Some messages');</script>"
         ]);
     }
@@ -35,7 +38,7 @@ class GalleriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('gallery.create');
     }
 
     /**
@@ -46,7 +49,26 @@ class GalleriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate request 
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'alt' => 'required|max:50',
+            'gallery_full_path' => 'required|mimes:png,svg,jpeg,jpg,gif|max:5000'
+        ]);
+
+        if ( request()->has('gallery_full_path') && $request->file('gallery_full_path') !== null )
+        {
+            // upload file here 
+            $imageStoragePath = Storage::putFile($request->file('gallery_full_path'));
+        }
+        // create gallery
+        Gallery::create([
+            'name' => $request->name,
+            'title' => $request->title,
+            'gallery_full_path' => $imageStoragePath
+        ]);
+
+        return redirect()->route('gallery.index');
     }
 
     /**
