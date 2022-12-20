@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\storeGalleryRequest;
 
 class GalleriesController extends Controller
 {
@@ -47,15 +48,9 @@ class GalleriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeGalleryRequest $request)
     {
         // validate request 
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'alt' => 'required|max:50',
-            'image' => 'required|mimes:png,svg,jpeg,jpg,gif'
-        ]);
-
         if ( request()->has('image') && $request->file('image') !== null )
         {
             // upload file here 
