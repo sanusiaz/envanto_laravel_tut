@@ -12,7 +12,7 @@
                     <h1>Contact Us</h1>
                 </div>
 
-                <div class="mt-8  dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 p-2 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <p>Contact Page</p>
                 </div>
 
@@ -23,8 +23,8 @@
 
 
 @section('scripts')
-        <script>
+        {{-- <script>
             alert('Welcome here successful');
-        </script>
+        </script> --}}
 
 @endsection
